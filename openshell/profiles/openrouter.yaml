@@ -1,0 +1,37 @@
+# OpenRouter inference profile.
+# Exported from the gateway (`openshell profile export openrouter`), with the
+# gateway-managed fields (resource_version, source, scope) removed.
+# Origin: https://github.com/NVIDIA/OpenShell/blob/main/providers/openrouter.yaml
+#
+# The key may only be sent to openrouter.ai:443, and only by /usr/local/bin/opencode.
+# `binaries` must match the program paths in the sandbox image you use.
+#
+# Import:   openshell profile import -f openshell/profiles/openrouter.yaml
+# Update:   openshell profile update -f openshell/profiles/openrouter.yaml
+# Validate: openshell profile lint   -f openshell/profiles/openrouter.yaml   (fails with "already exists" once imported)
+
+id: openrouter
+display_name: OpenRouter
+description: OpenRouter inference API
+category: inference
+credentials:
+  - name: api_key
+    description: OpenRouter API key
+    env_vars:
+      - OPENROUTER_API_KEY
+    required: true
+    auth_style: bearer
+    header_name: authorization
+    query_param: ""
+endpoints:
+  - host: openrouter.ai
+    port: 443
+    protocol: rest
+    access: read-write
+    enforcement: enforce
+binaries:
+  - /usr/local/bin/opencode
+inference_capable: true
+discovery:
+  credentials:
+    - api_key

@@ -1,0 +1,17 @@
+# OpenShell gateway config for macOS (Homebrew install), VM driver (libkrun).
+# Install: cp openshell/gateway.toml /opt/homebrew/var/openshell/gateway.toml && brew services restart openshell
+# See docs/setup-macos.md for why each key is there.
+
+[openshell]
+version = 2
+
+[openshell.gateway]
+compute_driver = "vm"
+guest_tls_ca   = "/opt/homebrew/var/openshell/tls/ca.crt"
+guest_tls_cert = "/opt/homebrew/var/openshell/tls/client/tls.crt"
+guest_tls_key  = "/opt/homebrew/var/openshell/tls/client/tls.key"
+
+[openshell.drivers.vm]
+grpc_endpoint = "https://127.0.0.1:17670"
+driver_dir    = "/opt/homebrew/opt/openshell/libexec"
+state_dir     = "/opt/homebrew/var/openshell/vm-driver"
