@@ -46,6 +46,19 @@ openshell/
 Planned: `images/` for custom sandbox images, and `.github/workflows/` for testing sandboxed agents
 on runners.
 
+## Status
+
+- [x] OpenShell 0.1.2 on the VM driver (libkrun); first sandboxed agent verified (own kernel, no
+      network card, placeholder key, egress blocked by default)
+- [x] Profiles, providers, rules and policy explored ([docs/usage.md](docs/usage.md))
+- [ ] Profile + provider for the **local model endpoint** served by
+      [llm-inference](https://github.com/emilarnesen/llm-inference) (`127.0.0.1:8080`, API key
+      injected by the supervisor). Open question: can a sandbox reach the Mac's loopback?
+- [ ] Custom sandbox image with `git`, `bash`, `curl`… (the OpenCode image is bare Alpine) and a
+      GitHub provider, to run a real agent on a real repo
+- [ ] MCP server inside a sandbox
+- [ ] Kaiden, as a short look
+
 ## Links
 
 - OpenShell docs: https://docs.nvidia.com/openshell/latest/
